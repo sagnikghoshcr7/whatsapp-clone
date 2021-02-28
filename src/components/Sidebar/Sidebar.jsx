@@ -34,9 +34,12 @@ function Sidebar() {
 
     <div className='sidebar_chats'>
       <SidebarChat />
+      <SidebarChat />
+      <SidebarChat />
+      <SidebarChat />
     </div>
     </div>
-  )
-};
+  );
+}
 
 export default Sidebar;
