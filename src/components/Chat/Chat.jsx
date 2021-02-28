@@ -17,6 +17,8 @@ function Chat() {
           <h3>Room name</h3>
           <p>Last Seen at ...</p>
         </div>
+        <div className="chat_headerRight">
+        </div>
       </div>
       <div className='chat_body'></div>
       <div className='chat_footer'></div>
