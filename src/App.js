@@ -3,8 +3,9 @@ import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <h1>Sagnik</h1>
+    <div className="app">
+      <div className="app_body">
+      </div>
     </div>
   );
 }
