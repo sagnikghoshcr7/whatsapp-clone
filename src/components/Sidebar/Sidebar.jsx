@@ -1,5 +1,5 @@
 import { Avatar, IconButton } from '@material-ui/core';
-import { Chat, DonutLarge, MoreVert } from '@material-ui/icons';
+import { Chat, DonutLarge, MoreVert, SearchOutlined } from '@material-ui/icons';
 import React from 'react';
 
 import './Sidebar.css';
@@ -13,11 +13,18 @@ function Sidebar() {
         <IconButton>
           <DonutLarge />
         </IconButton>
-        <Chat />
-        <MoreVert />        
+        <IconButton>
+          <Chat />
+        </IconButton>
+        <IconButton>
+          <MoreVert />  
+        </IconButton>              
       </div>
     </div>
-    <div className='sidebar_search'></div>
+    <div className='sidebar_search'>
+      <SearchOutlined />
+      <input placeholder="Search or start new chat" type='text' />
+    </div>
     <div className='sidebar_chats'></div>
     </div>
   )
