@@ -1,14 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import './Chat.css';
 import { Avatar, IconButton } from '@material-ui/core';
-import { AttachFile, MoreVert, SearchOutlined } from '@material-ui/icons';
+import { AttachFile, InsertEmoticon, Mic, MoreVert, SearchOutlined } from '@material-ui/icons';
 
 function Chat() {
+  const [input, setInput] = useState('');
   const [seed, setSeed] = useState('');
 
   useEffect(() => {
     setSeed(Math.floor(Math.random() * 5000))
   }, []);
+
+  const sendMessage = (e) => {
+
+  }
 
   return (
     <div className='chat'>
@@ -30,6 +35,7 @@ function Chat() {
           </IconButton>
         </div>
       </div>
+
       <div className='chat_body'>
         <p className={`chat_message ${true && 'chat_receiver'}`}>
           <span className='chat_name'>Sagnik Ghosh</span>
@@ -37,7 +43,20 @@ function Chat() {
           <span className='chat_timestemp'>1:30am</span>
         </p>
       </div>
-      <div className='chat_footer'></div>
+
+      <div className='chat_footer'>
+        <InsertEmoticon />
+        <form>
+          <input
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
+            placeholder="Type a message"
+            type='text'
+          />
+          <button onClick={sendMessage} type='submit'>Send a message</button>
+        </form>
+        <Mic />
+      </div>
     </div>
   );
 }
