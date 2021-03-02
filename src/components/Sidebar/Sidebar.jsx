@@ -1,24 +1,32 @@
-import { Avatar, IconButton } from '@material-ui/core';
-import { Chat, DonutLarge, MoreVert, SearchOutlined } from '@material-ui/icons';
-
-import SidebarChat from '../SidebarChat/SidebarChat';
-
 import React, { useEffect, useState } from 'react';
 
 import './Sidebar.css';
+
+import SidebarChat from '../SidebarChat/SidebarChat';
+
+import { Avatar, IconButton } from '@material-ui/core';
+import { Chat, DonutLarge, MoreVert, SearchOutlined } from '@material-ui/icons';
+
 import db from '../../firebase';
 
 function Sidebar() {
   const [rooms, setRooms] = useState([]);
 
   useEffect(() => {
-    db.collection('rooms').onSnapshot(snapshot => (
-      setRooms(snapshot.docs.map(doc => ({
-        id: doc.id,
-        data: doc.data(),
-      })))
-    ));
-  });
+    const unsubscribe = db.collection('rooms')
+    .onSnapshot((snapshot) => 
+      setRooms(
+        snapshot.docs.map((doc) => ({
+          id: doc.id,
+          data: doc.data(),
+        }))
+      )
+    );
+
+    return () => {
+      unsubscribe();
+    }
+  }, []);
 
   return (
     <div className='sidebar'>
